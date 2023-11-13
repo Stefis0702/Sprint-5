@@ -33,14 +33,25 @@ function App() {
       setStep(prev=>prev + 1)
   };
  }
-
+ function prevStep() {
+  if (step > 0) {
+    setStep((prev) => prev - 1);
+  }
+}
+const totalSteps= tutorialData.length;
   return (
     
-      <>
-        <Card currentCardData={currentCardData}nextStep={nextStep}/>
-      </>
-     
+    <>
+      <Card
+        currentCardData={currentCardData}
+        nextStep={nextStep}
+        prevStep={prevStep}
+        isLastStep={step === tutorialData.length - 1}
+        isFirstStep={step === 0}
+      />
+    </>
   );
+
 }
 
 
