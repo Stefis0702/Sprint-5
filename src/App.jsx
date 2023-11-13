@@ -3,6 +3,12 @@ import { useState } from 'react';
 
 
 function App() {
+
+  function nextStep(){
+    if (step<tutorialData.length-1){
+      setStep(prev=>prev + 1)
+  };
+ }
   
   const tutorialData=[
     {
@@ -29,7 +35,7 @@ function App() {
   return (
     
       <>
-        <Card {...tutorialData[step]}/>
+        <Card {...tutorialData[step]}nextStep={nextStep}/>
       </>
      
   );
