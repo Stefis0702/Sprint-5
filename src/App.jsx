@@ -4,11 +4,6 @@ import { useState } from 'react';
 
 function App() {
 
-  function nextStep(){
-    if (step<tutorialData.length-1){
-      setStep(prev=>prev + 1)
-  };
- }
   
   const tutorialData=[
     {
@@ -31,11 +26,18 @@ function App() {
     }
   ];
   const [step,setStep] = useState(0);
+  const currentCardData=tutorialData[step];
+  
+  function nextStep(){
+    if (step<tutorialData.length-1){
+      setStep(prev=>prev + 1)
+  };
+ }
 
   return (
     
       <>
-        <Card {...tutorialData[step]}nextStep={nextStep}/>
+        <Card currentCardData={currentCardData}nextStep={nextStep}/>
       </>
      
   );
