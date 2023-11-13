@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Card from './componentes/Card'
+import { useState } from 'react';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const tutorialData=[
+    {
+      title: "Dedica moltes hores",
+      description: "Un mínim de 30 hores a la setmana. Si no en tens prou, hauràs de dedicar-li més hores. Al principi sembla impossible, però notaràs una millora ràpidament.",
+      bgColor: "#2a9d8f",
+      image: "./src/image/time_managment.svg",
+    },
+    {
+      title: "Programa projectes propis",
+      description: "Més val 10 hores treballant en projectes propis que 10 hores mirant tutorials. La motivació i la implicació en el projecte ajudarà a accelerar el teu aprenentatge.",
+      bgColor: "#adb5bd",
+      image: "./src/image/programming.svg",
+    },
+    {
+      title: "Procura descansar",
+      description: "Descansar bé i desconnectar són vitals. D'aquesta manera reduiràs l'estrès i l'ansietat. Milloraràs la teva concentració i consolidaràs el teu aprenentatge.",
+      bgColor: "#ffc300",
+      image: "./src/image/meditation.svg",
+    }
+  ];
+  const [step,setStep] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    
+      <>
+        <Card {...tutorialData[step]}/>
+      </>
+     
+  );
 }
 
+
+ 
 export default App
