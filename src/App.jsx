@@ -1,5 +1,7 @@
 import Card from './componentes/Card'
 import { useState } from 'react';
+import Indicator from './componentes/Indicator';
+
 
 
 function App() {
@@ -37,7 +39,12 @@ function App() {
   if (step > 0) {
     setStep((prev) => prev - 1);
   }
-}
+};
+
+const handleDotClick = (index) => {
+  setStep(index);
+};
+
 const totalSteps= tutorialData.length;
   return (
     
@@ -48,7 +55,14 @@ const totalSteps= tutorialData.length;
         prevStep={prevStep}
         isLastStep={step === tutorialData.length - 1}
         isFirstStep={step === 0}
+        step={step}
+        totalSteps={tutorialData.length}
+        onDotClick={handleDotClick}
+       
       />
+      
+      
+   
     </>
   );
 

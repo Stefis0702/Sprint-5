@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Indicator from "./Indicator";
 
-function Card({ currentCardData, nextStep, prevStep, isLastStep, isFirstStep  }) {
+function Card({ currentCardData, nextStep, prevStep, isLastStep, isFirstStep,totalSteps,step, onDotClick }) {
   const ImageStyles = styled.div`
   border: 1px solid #ddd;
   border-radius: 15px 15px 0 0;
@@ -37,6 +38,13 @@ margin-top: 10px;
 align-self: flex-end; 
 
 `;
+const IndicatorContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-start;
+ 
+  
+`;
 
 const TextContainer = styled.div`
 flex-grow:1 ; // Hace que este contenedor ocupe el espacio disponible
@@ -57,7 +65,7 @@ background-color: white;
 padding: 20px 25px;
 border-radius: 0 0 30px 30px;
 justify-content: space-between;
-align-items: center; // Alinea los elementos verticalmente
+align-items: center; 
 
 @media (min-width: 768px) {
   flex-direction: row; 
@@ -84,10 +92,14 @@ align-items: center; // Alinea los elementos verticalmente
         <img src={currentCardData.image}  />
       </ImageStyles>
       <CardBody>
+       
         <TextContainer>
         <h2>{currentCardData.title}</h2>
         <p>{currentCardData.description}</p>
         </TextContainer>
+        <IndicatorContainer>
+          <Indicator totalSteps={totalSteps} step={step} onDotClick={onDotClick}/>
+        </IndicatorContainer>
         <ButtonContainer>
         {isFirstStep ? (
           <ButtonStyles onClick={nextStep}>{"→"}</ButtonStyles>
@@ -99,6 +111,7 @@ align-items: center; // Alinea los elementos verticalmente
             )}
           </>
         )}
+        
       </ButtonContainer>
       </CardBody>
   </ResponsiveCardStyles>
